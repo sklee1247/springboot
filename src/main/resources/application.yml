@@ -1,3 +1,20 @@
 spring:
   application:
     name: springboot
+
+#DB설정
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mysql?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: esumtech1@#$5
+
+# true 설정 시 JPA 쿼리문 확인 가능
+  jpa:
+    show-sql: true
+
+# DDL 정의 시 DB의 고유 기능을 사용 가능
+    hibernate:
+      ddl-auto: update
+
+# JPA의 구현체인 Hibernate가 동작하면서 발생한 SQL의 가독성을 높여줌
