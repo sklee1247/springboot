@@ -24,13 +24,14 @@ public class SecurityConfiguration {
 		// @formatter:off
 		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
+				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize
 						.requestMatchers("/signup", "/", "/login").permitAll()
 						.anyRequest().authenticated())
 				// 폼 로그인은 현재 사용하지 않음         
-				.formLogin(formLogin -> formLogin
-						.loginPage("/login")
-						.defaultSuccessUrl("/home"))
+//				.formLogin(formLogin -> formLogin
+//						.loginPage("/login")
+//						.defaultSuccessUrl("/home"))
 				.logout((logout) -> logout
 						.logoutSuccessUrl("/login")
 						.invalidateHttpSession(true))
