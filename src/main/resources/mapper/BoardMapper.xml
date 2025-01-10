@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "/Dev/workspaces/springboot/src/main/resources/mybatis/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.study.board.dao.BoardMapper">
+<mapper namespace="com.example.springboot.board.dao.BoardMapper">
 
-    <select id="getAllBoardList" resultType="com.study.board.dto.Board">
+	<select id="getAllBoardList" resultType="com.example.springboot.board.dto.Board">
         SELECT * FROM tb_board ORDER BY board_id DESC;
     </select>
 

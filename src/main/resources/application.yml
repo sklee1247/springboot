@@ -23,4 +23,9 @@ spring:
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.study.baord
+  type-aliases-package: com.example.springboot.baord
+
+# application.yml 에서 로깅 설정
+logging:
+  level:
+    com.example.springboot: debug
