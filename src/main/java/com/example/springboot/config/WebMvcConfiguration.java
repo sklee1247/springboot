@@ -38,6 +38,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	            .addResourceLocations("/css/");
 	    registry.addResourceHandler("/images/**")
 	            .addResourceLocations("/images/");
+	    registry.addResourceHandler("/assets/**")
+        		.addResourceLocations("/assets/");
+	    registry.addResourceHandler("/vendor/**")
+	    		.addResourceLocations("/vendor/");
 		// @formatter:on
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
