@@ -30,6 +30,14 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/**")
 				.addResourceLocations("classpath:/resources/")
 				.setCachePeriod(31556926);
+		registry.addResourceHandler("/favicon.ico")
+	            .addResourceLocations("classpath:/resources/");
+	    registry.addResourceHandler("/js/**")
+	            .addResourceLocations("/js/");
+	    registry.addResourceHandler("/css/**")
+	            .addResourceLocations("/css/");
+	    registry.addResourceHandler("/images/**")
+	            .addResourceLocations("/images/");
 		// @formatter:on
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
@@ -53,8 +61,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	@Bean
 	public SpringResourceTemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-		resolver.setPrefix("classpath:/WEB-INF/view/");
-		resolver.setSuffix(".jsp");
+		resolver.setPrefix("classpath:/templates/");
+		resolver.setSuffix(".html");
 		resolver.setTemplateMode(TemplateMode.HTML);
 		return resolver;
 	}

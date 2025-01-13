@@ -9,13 +9,28 @@ spring:
     username: root
     password: esumtech1@#$5
 
+  web:
+    resources:
+      static-locations: classpath:/static/
+
 # true 설정 시 JPA 쿼리문 확인 가능
 #  jpa:
 #    show-sql: true
 
 # DDL 정의 시 DB의 고유 기능을 사용 가능
-    hibernate:
-      ddl-auto: update
+  hibernate:
+    ddl-auto: update
+  
+  thymeleaf:
+    enabled: true
+    cache: false
+    prefix: file:src/main/resources/templates/
+    suffix: .html
+    check-template-location: true
+
+  devtools:
+    restart:
+      exclude: true
 
 # JPA의 구현체인 Hibernate가 동작하면서 발생한 SQL의 가독성을 높여줌
 
@@ -23,7 +38,7 @@ spring:
 mybatis:
   config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.springboot.baord
+  type-aliases-package: com.example.springboot.board
 
 # application.yml 에서 로깅 설정
 logging:

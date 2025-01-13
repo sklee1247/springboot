@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/common/layouts/defaultLayout}">
+
+  <th:block layout:fragment="content">  
+    <div class="row main-head ">
+      <div class="col-12 main-title ">  
+        # Movie List
+      </div> 
+    </div>
+    <div class="row ">
+      <div class="table-responsive portlet">
+        <table class="table table-sm table-hover tb-success">
+          <tr class="center">
+            <th>#</th>
+            <th>title</th>
+            <th>type</th>
+            <th>createTime</th>
+          </tr> 
+          <th:block th:each="num, numStat : ${#numbers.sequence(1,10)}">
+          <tr>
+            <td th:text="${numStat.size-numStat.index}"></td>
+            <td th:text="${'영화제목 ' + (numStat.size-numStat.index)}"></td>
+            <td th:text="${'종류 ' + (numStat.count)}"></td>
+            <td th:text="${'2023-04-0' + numStat.index + ' 11:0' + numStat.index}"></td>
+          </tr>
+          </th:block>	      
+        </table>    
+      </div>
+    </div>  
+  </th:block>      
+</html>

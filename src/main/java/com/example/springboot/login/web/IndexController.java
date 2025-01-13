@@ -3,6 +3,8 @@ package com.example.springboot.login.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import ch.qos.logback.core.model.Model;
+
 /**
  * Controller for "/".
  *
@@ -15,5 +17,10 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
-
+	
+	@GetMapping("/movie")  
+	public String list() { 	
+			
+		return "/pages/list";
+	}
 }
