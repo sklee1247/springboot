@@ -11,6 +11,7 @@ spring:
 
   web:
     resources:
+      add-mappings: true
       static-locations: classpath:/static/
 
 # true 설정 시 JPA 쿼리문 확인 가능

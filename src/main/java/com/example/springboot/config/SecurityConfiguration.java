@@ -24,14 +24,19 @@ public class SecurityConfiguration {
 		// @formatter:off
 		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
-				.formLogin(AbstractHttpConfigurer::disable)
+//				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize
-						.requestMatchers("/", "/**").permitAll()
-						.anyRequest().authenticated())
+						.requestMatchers("/index").authenticated() // 로그인 후 /home 페이지 접근 허용
+			            .requestMatchers("/", "/login", "/assets/**", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll() // 로그인 페이지는 누구나 접근 가능
+//			            .requestMatchers("/admin").hasRole("ADMIN") // ADMIN 역할만 /admin 페이지 접근 가능
+			            .requestMatchers("/**").hasRole("USER")
+			            .anyRequest().authenticated()) // USER 역할만 /user 페이지 접근 가능
 				// 폼 로그인은 현재 사용하지 않음         
-//				.formLogin(formLogin -> formLogin
-//						.loginPage("/login")
-//						.defaultSuccessUrl("/home"))
+				.formLogin(formLogin -> formLogin
+						.loginPage("/login") // 로그인 페이지 URL
+			            .loginProcessingUrl("/perform_login") // 로그인 폼 제출 URL
+			            .defaultSuccessUrl("/index", true) // 로그인 성공 후 이동할 URL
+			            .failureUrl("/login?error=true")) // 로그인 실패 시 이동할 URL
 				.logout((logout) -> logout
 						.logoutSuccessUrl("/login")
 						.invalidateHttpSession(true))
@@ -43,15 +48,15 @@ public class SecurityConfiguration {
 	}
 
 	// @formatter:off
-	@Bean
-	public UserDetailsService userDetailsService() {
-		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user")
-				.password("password")
-				.roles("USER")
-				.build();
-		return new InMemoryUserDetailsManager(user);
-	}
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//		UserDetails user = User.withDefaultPasswordEncoder()
+//				.username("user")
+//				.password("password")
+//				.roles("USER")
+//				.build();
+//		return new InMemoryUserDetailsManager(user);
+//	}
 	// @formatter:on
 
 	@Bean
