@@ -45,3 +45,8 @@ mybatis:
 logging:
   level:
     com.example.springboot: debug
+
+# context path 설정
+server:
+  servlet:
+    context-path: ''

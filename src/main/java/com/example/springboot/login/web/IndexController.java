@@ -29,14 +29,49 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("/user/index")
-	public String userIndex() {
-		getCurrentUser();
-		
-//		UserRoleCheck urc = new UserRoleCheck();
-//		urc.checkUserRole();
-		
-		return "index";
+	@GetMapping("admin/layoutStatic")
+	public String layoutStatic() {
+		return "admin/layoutStatic";
+	}
+	
+	@GetMapping("user/layoutSidenavLight")
+	public String layoutSidenavLight() {
+		return "user/layoutSidenavLight";
+	}
+	
+	@GetMapping("/register")
+	public String register() {
+		return "pages/register";
+	}
+	
+	@GetMapping("/password")
+	public String password() {
+		return "pages/password";
+	}
+	
+	@GetMapping("/401")
+	public String error401() {
+		return "pages/401";
+	}
+	
+	@GetMapping("/404")
+	public String error404() {
+		return "pages/404";
+	}
+	
+	@GetMapping("/500")
+	public String error500() {
+		return "pages/500";
+	}
+	
+	@GetMapping("/charts")
+	public String charts() {
+		return "charts/charts";
+	}
+	
+	@GetMapping("/tables")
+	public String tables() {
+		return "tables/tables";
 	}
 	
 	public void getCurrentUser() {
