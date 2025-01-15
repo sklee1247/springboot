@@ -2,6 +2,7 @@ package com.example.springboot.login.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,10 +29,22 @@ public class IndexController {
 		return "index";
 	}
 	
+	@GetMapping("/user/index")
+	public String userIndex() {
+		getCurrentUser();
+		
+//		UserRoleCheck urc = new UserRoleCheck();
+//		urc.checkUserRole();
+		
+		return "index";
+	}
+	
 	public void getCurrentUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String username = (String) authentication.getPrincipal();
-        System.out.println("Logged-in user: " + username);
+		UserDetails userInfo = (UserDetails) authentication.getPrincipal();
+        System.out.println("Logged-in user name: " + userInfo.getUsername());
+        System.out.println("Logged-in user password: " + userInfo.getPassword());
+        System.out.println("Logged-in user authorities: " + userInfo.getAuthorities());
         System.out.println("Logged-in authentication: " + authentication.toString());
     }
 }
