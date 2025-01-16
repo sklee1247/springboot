@@ -1,6 +1,15 @@
 spring:
+  profiles:
+    active: local
+
+---
+
+spring:
   application:
     name: springboot
+  config:
+    activate:
+      on-profile: local
 
 #DB설정
   datasource:
@@ -8,6 +17,12 @@ spring:
     url: jdbc:mysql://localhost:3306/mysql?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: esumtech1@#$5
+
+    hikari:
+      connection-timeout: 20000 #20초: DB 연결 최대 대기 시간
+      idle-timeout: 30000 #30초 : pool에 일을 안하는 커넥션을 유지하는 시간
+      max-lifetime: 230000 #20초 DB 28.8초에서 5초 짧께 커넥션 제거
+      auto-commit: true # 자동 커밋
 
   web:
     resources:
@@ -23,9 +38,11 @@ spring:
     ddl-auto: update
   
   thymeleaf:
+    mode: HTML
+    encoding: UTF-8
     enabled: true
     cache: false
-    prefix: file:src/main/resources/templates/
+    prefix: classpath:/templates/
     suffix: .html
     check-template-location: true
 
@@ -33,12 +50,17 @@ spring:
     restart:
       exclude: true
 
+#--jsp setting--
+#spring.mvc.view.prefix=/WEB-INF/jsp/
+#spring.mvc.view.suffix=.jsp
+#spring.thymeleaf.enabled=false
+
 # JPA의 구현체인 Hibernate가 동작하면서 발생한 SQL의 가독성을 높여줌
 
 # Mybatis 설정 정보
 mybatis:
   config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/**/*.xml
   type-aliases-package: com.example.springboot.board
 
 # application.yml 에서 로깅 설정
@@ -50,3 +72,8 @@ logging:
 server:
   servlet:
     context-path: ''
+  port: 8080
+
+---
+
+## do other profile setting

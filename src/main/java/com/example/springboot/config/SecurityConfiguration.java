@@ -62,12 +62,12 @@ public class SecurityConfiguration {
 	// @formatter:on
 
 	@Bean
-	public static PasswordEncoder passwordEncoder() {
+	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 	
 	@Bean
 	public HttpSessionEventPublisher httpSessionEventPublisher() {
 	    return new HttpSessionEventPublisher();
-	}
+	} 
 }

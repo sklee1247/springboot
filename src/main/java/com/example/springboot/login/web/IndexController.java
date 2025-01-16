@@ -29,12 +29,12 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("admin/layoutStatic")
+	@GetMapping("/admin/layoutStatic")
 	public String layoutStatic() {
 		return "admin/layoutStatic";
 	}
 	
-	@GetMapping("user/layoutSidenavLight")
+	@GetMapping("/user/layoutSidenavLight")
 	public String layoutSidenavLight() {
 		return "user/layoutSidenavLight";
 	}
