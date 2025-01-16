@@ -20,8 +20,7 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
-		http	.addFilterBefore(new SecurityContextPersistenceFilter(), UsernamePasswordAuthenticationFilter.class)
-				.csrf(AbstractHttpConfigurer::disable)
+		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
 //				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize

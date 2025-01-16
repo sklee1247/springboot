@@ -33,15 +33,15 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		registry.addResourceHandler("/favicon.ico")
 	            .addResourceLocations("classpath:/resources/");
 	    registry.addResourceHandler("/js/**")
-	            .addResourceLocations("/js/");
+	            .addResourceLocations("classpath:/static/js/");
 	    registry.addResourceHandler("/css/**")
-	            .addResourceLocations("/css/");
+	            .addResourceLocations("classpath:/static/css/");
 	    registry.addResourceHandler("/images/**")
-	            .addResourceLocations("/images/");
+	            .addResourceLocations("classpath:/static/images/");
 	    registry.addResourceHandler("/assets/**")
-        		.addResourceLocations("/assets/");
+        		.addResourceLocations("classpath:/static/assets/");
 	    registry.addResourceHandler("/vendor/**")
-	    		.addResourceLocations("/vendor/");
+	    		.addResourceLocations("classpath:/static/vendor/");
 		// @formatter:on
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
