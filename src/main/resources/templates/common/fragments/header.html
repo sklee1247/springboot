@@ -28,11 +28,8 @@
 	        <li class="nav-item dropdown">
 	            <a th:href="@{/#!}" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 	        </li>
-	        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-	            <a th:href="@{/#!}" class="dropdown-item">Settings</a>
-	            <a th:href="@{/#!}" class="dropdown-item">Activity Log</a>
-	            <div class="dropdown-divider"></div>
-	            <a th:href="@{/login}" class="dropdown-item">Logout</a>
+	        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="display:block;">
+	            <a th:href="@{/logout}" class="dropdown-item">Logout</a>
 	        </div>
 	    </ul>
 	</nav>
