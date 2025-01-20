@@ -11,5 +11,5 @@ public interface UserMapper {
 //		return findUser(@param("param") Users users);
 //	}
 	
-	public void save(Users user);
+	public void save(Users user) throws Exception;
 }

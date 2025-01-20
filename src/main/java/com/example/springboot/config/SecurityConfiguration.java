@@ -25,7 +25,7 @@ public class SecurityConfiguration {
 //				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize
 						.requestMatchers("/index").authenticated() // 로그인 후 /home 페이지 접근 허용
-		                .requestMatchers("/", "/login", "/assets/**", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll() // 로그인 페이지는 누구나 접근 가능
+		                .requestMatchers("/", "/login", "/register", "/assets/**", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll() // 로그인 페이지는 누구나 접근 가능
 			            .requestMatchers("/admin/**").hasRole("ADMIN") // ADMIN 역할만 /admin 페이지 접근 가능
 			            .requestMatchers("/user/**").hasRole("USER") // USER 역할만 /user 페이지 접근 가능
 			            .anyRequest().authenticated())

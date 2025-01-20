@@ -18,6 +18,8 @@ public class Users {
 
 	private String userId;
 
+	private String email;
+	
 	private String password;
 
 	private String authority;
