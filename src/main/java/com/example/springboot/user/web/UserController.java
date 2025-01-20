@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.springboot.user.dto.Users;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/register")
 public class UserController {
 
-	@PostMapping("/userRegist")
+	@PostMapping("/submitUser")
     public Map<String, String> submitUser(@RequestBody Users user) {
         // 예: 데이터 저장 로직 수행
         System.out.println("Received user: " + user);

@@ -25,7 +25,7 @@ public class SecurityConfiguration {
 //				.formLogin(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((authorize) -> authorize
 						.requestMatchers("/index").authenticated() // 로그인 후 /home 페이지 접근 허용
-		                .requestMatchers("/", "/login", "/register", "/assets/**", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll() // 로그인 페이지는 누구나 접근 가능
+		                .requestMatchers("/", "/login/login", "/register/**", "/assets/**", "/css/**", "/images/**", "/js/**", "/vendor/**").permitAll() // 로그인 페이지는 누구나 접근 가능
 			            .requestMatchers("/admin/**").hasRole("ADMIN") // ADMIN 역할만 /admin 페이지 접근 가능
 			            .requestMatchers("/user/**").hasRole("USER") // USER 역할만 /user 페이지 접근 가능
 			            .anyRequest().authenticated())
@@ -33,14 +33,14 @@ public class SecurityConfiguration {
 				.formLogin(formLogin -> formLogin
 						.successHandler(new CustomAuthenticationSuccessHandler())
 						.failureHandler(new CustomAuthenticationFailureHandler())
-						.loginPage("/login") // 로그인 페이지 URL
+						.loginPage("/login/login") // 로그인 페이지 URL
 			            .loginProcessingUrl("/perform_login")
 			            .permitAll()) // 로그인 폼 제출 URL
 //			            .defaultSuccessUrl("/index", true) // 로그인 성공 후 이동할 URL
 //			            .failureUrl("/login?error=true")
 				// 로그인 실패 시 이동할 URL
 				.logout((logout) -> logout
-						.logoutSuccessUrl("/login")
+						.logoutSuccessUrl("/login/login")
 						.invalidateHttpSession(true))
 				.sessionManagement(session -> session
 					.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)

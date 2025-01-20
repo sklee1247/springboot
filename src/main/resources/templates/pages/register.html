@@ -61,9 +61,9 @@
                   password: $('#inputPassword').val(),
                   confirmPassword: $('#confirmPassword').val()
               };
-
+console.log("formData => " + JSON.stringify(formData));
               $.ajax({
-                  url: '/user/userRegist',
+                  url: '/register/submitUser',
                   method: 'POST',
 				  async: false,
 				  cache: false,
