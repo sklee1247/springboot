@@ -1,8 +1,8 @@
-package com.example.springboot.common.dao;
+package com.example.springboot.user.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.springboot.common.dto.Users;
+import com.example.springboot.user.dto.Users;
 
 @Mapper
 public interface UserMapper {

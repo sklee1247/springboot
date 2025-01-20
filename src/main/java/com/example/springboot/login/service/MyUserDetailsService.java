@@ -12,8 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.common.dao.UserMapper;
-import com.example.springboot.common.dto.Users;
+import com.example.springboot.user.dao.UserMapper;
+import com.example.springboot.user.dto.Users;
 
 import lombok.RequiredArgsConstructor;
 
