@@ -9,5 +9,5 @@ import com.example.springboot.board.model.Board;
 @Mapper
 public interface BoardMapper {
     
-	public List<Board> getAllBoardList();
+	public List<Board> getAllBoardList() throws Exception;
 }

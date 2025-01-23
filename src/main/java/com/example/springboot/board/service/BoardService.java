@@ -1,8 +1,8 @@
 package com.example.springboot.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.springboot.board.dao.BoardMapper;
@@ -18,7 +18,15 @@ public class BoardService {
     }
 
     public List<Board> getAllBoardList() {
-        return boardMapper.getAllBoardList();
+    	List<Board> board = new ArrayList<Board>();
+    	
+    	try {
+        	board = boardMapper.getAllBoardList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return board;
     }
     
 }

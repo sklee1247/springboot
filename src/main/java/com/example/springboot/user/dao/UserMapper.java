@@ -7,7 +7,7 @@ import com.example.springboot.user.model.Users;
 @Mapper
 public interface UserMapper {
 
-	public Users findUser(Users users);
+	public Users findUser(Users users) throws Exception;
 	
-	public void saveUser(Users users);
+	public void saveUser(Users users) throws Exception;
 }
