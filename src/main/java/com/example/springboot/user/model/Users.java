@@ -1,4 +1,4 @@
-package com.example.springboot.user.dto;
+package com.example.springboot.user.model;
 
 import java.time.LocalDate;
 

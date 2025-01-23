@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "/Dev/workspaces/springboot/src/main/resources/mybatis/mybatis-3-mapper.dtd">
 
-<mapper namespace="user.UserMapper">
+<mapper namespace="com.example.springboot.user.dao.UserMapper">
 
-	<select id="findUser" resultType="com.example.springboot.user.dto.Users">
+	<select id="findUser" resultType="com.example.springboot.user.model.Users">
         SELECT * FROM USERS WHERE user_id = #{userId};
     </select>
 
-	<insert id="save" parameterType="com.example.springboot.user.dto.Users">
-        INSERT INTO USERS (user_id, password, authority, createdAt)
-        VALUES (#{param.user_id}, #{param.password}, #{param.authority}, now());
+	<insert id="saveUser" parameterType="com.example.springboot.user.model.Users">
+        INSERT INTO USERS (user_id, email, password, authority, createdAt)
+        VALUES (#{userId}, #{email}, #{password}, 'USER', now());
     </insert>
     
 </mapper>

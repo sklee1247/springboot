@@ -14,7 +14,7 @@ spring:
 #DB설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mysql?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/proj?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: esumtech1@#$5
 
@@ -67,6 +67,12 @@ mybatis:
 logging:
   level:
     com.example.springboot: debug
+
+p6spy:
+  config:
+    appender: com.p6spy.engine.spy.appender.Slf4JLogger  # 로그 출력 설정 (Slf4J)
+    logMessageFormat: com.p6spy.engine.spy.appender.MultiLineFormat  # SQL 로그 포맷 (멀티라인 형식)
+    logLevel: DEBUG  # 로그 레벨 설정 (DEBUG, INFO 등)
 
 # context path 설정
 server:

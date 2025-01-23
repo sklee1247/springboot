@@ -4,7 +4,7 @@
 
 <mapper namespace="com.example.springboot.board.dao.BoardMapper">
 
-	<select id="getAllBoardList" resultType="com.example.springboot.board.dto.Board">
+	<select id="getAllBoardList" resultType="com.example.springboot.board.model.Board">
         SELECT * FROM tb_board ORDER BY board_id DESC;
     </select>
 

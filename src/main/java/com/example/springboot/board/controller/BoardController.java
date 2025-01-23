@@ -1,11 +1,11 @@
-package com.example.springboot.board.web;
+package com.example.springboot.board.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springboot.board.dto.Board;
+import com.example.springboot.board.model.Board;
 import com.example.springboot.board.service.BoardService;
 
 @RestController

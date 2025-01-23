@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.springboot.board.dto.Board;
+import com.example.springboot.board.model.Board;
 
 @Mapper
 public interface BoardMapper {
-    List<Board> getAllBoardList();
+    
+	public List<Board> getAllBoardList();
 }

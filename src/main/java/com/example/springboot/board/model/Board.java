@@ -1,4 +1,4 @@
-package com.example.springboot.board.dto;
+package com.example.springboot.board.model;
 
 import lombok.*;
 
