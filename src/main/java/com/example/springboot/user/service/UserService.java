@@ -21,4 +21,8 @@ public class UserService {
 	public void userSave(Users users) throws Exception {
 		userMapper.saveUser(users);
 	}
+	
+	public Users findUserByUserId(String userId) throws Exception {
+		return userMapper.findUserByUserId(userId);
+	}
 }

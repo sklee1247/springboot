@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,13 @@ public class UserController {
         	if(findUsers != null) {
         		response.put("message", "User " + user.getUserId() + " is Exits! Can not Created!");
         	} else {
+        		 // BCryptPasswordEncoder 생성
+                PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        		
+                String encodedPassword = passwordEncoder.encode(user.getPassword());
+                
+                user.setPassword(encodedPassword);
+                
         		userservice.userSave(user);
         		
         		response.put("message", "User " + user.getUserId() + " has been successfully submitted!");

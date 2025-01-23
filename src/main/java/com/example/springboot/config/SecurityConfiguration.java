@@ -6,20 +6,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration{
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		// @formatter:off
+
 		http	.csrf(AbstractHttpConfigurer::disable)
 				.httpBasic(AbstractHttpConfigurer::disable)
 //				.formLogin(AbstractHttpConfigurer::disable)
@@ -31,13 +29,13 @@ public class SecurityConfiguration {
 			            .anyRequest().authenticated())
 				// 폼 로그인은 현재 사용하지 않음         
 				.formLogin(formLogin -> formLogin
-						.successHandler(new CustomAuthenticationSuccessHandler())
-						.failureHandler(new CustomAuthenticationFailureHandler())
+//						.successHandler(new CustomAuthenticationSuccessHandler())
+//						.failureHandler(new CustomAuthenticationFailureHandler())
 						.loginPage("/login/login") // 로그인 페이지 URL
 			            .loginProcessingUrl("/perform_login")
-			            .permitAll()) // 로그인 폼 제출 URL
-//			            .defaultSuccessUrl("/index", true) // 로그인 성공 후 이동할 URL
-//			            .failureUrl("/login?error=true")
+			            .permitAll() // 로그인 폼 제출 URL
+			            .defaultSuccessUrl("/index", true) // 로그인 성공 후 이동할 URL
+			            .failureUrl("/login/login?error=true"))
 				// 로그인 실패 시 이동할 URL
 				.logout((logout) -> logout
 						.logoutSuccessUrl("/login/login")
@@ -45,29 +43,17 @@ public class SecurityConfiguration {
 				.sessionManagement(session -> session
 					.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 				);
-		// @formatter:on
+		
 		return http.build();
 	}
 
-	// @formatter:off
-//	@Bean
-//	public UserDetailsService userDetailsService() {
-//		UserDetails user = User.withDefaultPasswordEncoder()
-//				.username("user")
-//				.password("password")
-//				.roles("USER")
-//				.build();
-//		return new InMemoryUserDetailsManager(user);
-//	}
-	// @formatter:on
-
 	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-	}
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();  // BCrypt를 사용하여 비밀번호 암호화
+    }
 	
 	@Bean
 	public HttpSessionEventPublisher httpSessionEventPublisher() {
 	    return new HttpSessionEventPublisher();
-	} 
+	}
 }

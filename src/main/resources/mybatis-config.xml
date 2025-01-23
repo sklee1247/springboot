@@ -3,6 +3,10 @@
         "/Dev/workspaces/springboot/src/main/resources/mybatis/mybatis-3-config.dtd">
 
 <configuration>
+	<settings>
+        <!-- snake_case 컬럼을 camelCase 필드로 자동 매핑 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <mappers>
         <mapper resource="mapper/board/BoardMapper.xml"/>
         <mapper resource="mapper/user/UserMapper.xml"/>

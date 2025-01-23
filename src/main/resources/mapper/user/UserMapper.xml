@@ -13,4 +13,8 @@
         VALUES (#{userId}, #{email}, #{password}, 'USER', now());
     </insert>
     
+    <select id="findUserByUserId" resultType="com.example.springboot.user.model.Users">
+        SELECT * FROM USERS WHERE user_id = #{userId};
+    </select>
+    
 </mapper>
