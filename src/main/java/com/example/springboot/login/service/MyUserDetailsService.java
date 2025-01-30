@@ -11,7 +11,6 @@ import com.example.springboot.user.model.Users;
 import com.example.springboot.user.service.UserService;
 
 @Service
-//@RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired
