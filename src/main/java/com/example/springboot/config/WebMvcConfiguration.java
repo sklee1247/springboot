@@ -5,15 +5,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.ISpringTemplateEngine;
-import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import com.example.springboot.interceptor.MyInterceptor;
 
 @EnableWebMvc
 @Configuration
@@ -46,6 +47,13 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
 
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+	    registry.addInterceptor(new MyInterceptor())  // Add your custom interceptor
+	            .addPathPatterns("/**")  // Apply to all URLs
+	            .excludePathPatterns("/login", "/resources/**");  // Exclude specific paths
+	}
+	
 	@Bean
 	public ViewResolver viewResolver(ISpringTemplateEngine templateEngine) {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();

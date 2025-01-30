@@ -42,6 +42,9 @@ public class SecurityConfiguration{
 						.invalidateHttpSession(true))
 				.sessionManagement(session -> session
 					.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+					.invalidSessionUrl("/login/login")  // Redirect to login page on session timeout
+	                .maximumSessions(1)           // Allow only one session per user
+	                .expiredUrl("/") // Redirect to custom session expired page
 				);
 		
 		return http.build();
