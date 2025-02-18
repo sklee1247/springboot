@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "/Dev/workspaces/springboot/src/main/resources/mybatis/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper SYSTEM "file:///C:/workspace/springboot/src/main/resources/mybatis/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.springboot.user.dao.UserMapper">
 
@@ -9,7 +8,7 @@
     </select>
 
 	<insert id="saveUser" parameterType="com.example.springboot.user.model.Users">
-        INSERT INTO USERS (user_id, email, password, authority, createdAt)
+        INSERT INTO USERS (user_id, email, password, authority, created_at)
         VALUES (#{userId}, #{email}, #{password}, 'USER', now());
     </insert>
     

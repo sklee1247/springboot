@@ -51,7 +51,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 	    registry.addInterceptor(new MyInterceptor())  // Add your custom interceptor
 	            .addPathPatterns("/**")  // Apply to all URLs
-	            .excludePathPatterns("/login", "/resources/**");  // Exclude specific paths
+	            .excludePathPatterns("/login", "/index", "/js/**", "/css/**", "/images/**", "/assets/**", "/vendor/**");  // Exclude specific paths
 	}
 	
 	@Bean

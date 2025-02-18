@@ -13,19 +13,26 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("Before controller method execution");
         
-        // Check if the session contains the user attribute (i.e., the user is logged in)
-        Object user = request.getSession().getAttribute("user");
+        System.out.println("request.getRequestURI() ==> " + request.getRequestURI());
         
-        if (user == null) {
-            // If not logged in, redirect to the login page
-            response.sendRedirect("/login");
-            return false; // Prevent further processing of the request
-        }
-        
-        // Optionally check session expiration (custom logic)
-        if (isSessionExpired(request)) {
-            response.sendRedirect("/sessionExpired"); // Custom session expired page
-            return false;
+        if (request.getRequestURI().equals("/perform_login") && request.getMethod().equalsIgnoreCase("POST")) {
+            System.out.println("로그인 요청 감지: " + request.getRemoteAddr());
+            // 로그인 전 처리 (예: 로그인 시도 기록, IP 제한 등)
+        } else {
+            // Check if the session contains the user attribute (i.e., the user is logged in)
+            Object user = request.getSession().getAttribute("user");
+            
+            if (user == null) {
+                // If not logged in, redirect to the login page
+                response.sendRedirect("/login");
+                return false; // Prevent further processing of the request
+            }
+            
+            // Optionally check session expiration (custom logic)
+            if (isSessionExpired(request)) {
+                response.sendRedirect("/sessionExpired"); // Custom session expired page
+                return false;
+            }
         }
 
         return true; // Return true to proceed to the controller, false to stop the request

@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
  * 
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class loginController {
 	
 	@GetMapping("/login")

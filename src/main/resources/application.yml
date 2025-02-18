@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/proj?useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: esumtech1@#$5
+    password: foreaf5a1!234%
 
     hikari:
       connection-timeout: 20000 #20초: DB 연결 최대 대기 시간
