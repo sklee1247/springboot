@@ -1,5 +1,8 @@
 package com.example.springboot.interceptor;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,9 +23,10 @@ public class MyInterceptor implements HandlerInterceptor {
             // 로그인 전 처리 (예: 로그인 시도 기록, IP 제한 등)
         } else {
             // Check if the session contains the user attribute (i.e., the user is logged in)
-            Object user = request.getSession().getAttribute("user");
-            
-            if (user == null) {
+        	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        	UserDetails userInfo = (UserDetails) authentication.getPrincipal();
+        	
+            if (userInfo == null) {
                 // If not logged in, redirect to the login page
                 response.sendRedirect("/login");
                 return false; // Prevent further processing of the request
