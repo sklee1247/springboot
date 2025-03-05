@@ -1,4 +1,4 @@
-package com.example.springboot.login.web;
+package com.example.springboot.login.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
