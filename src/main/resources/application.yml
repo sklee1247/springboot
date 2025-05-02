@@ -14,9 +14,9 @@ spring:
 #DB설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/proj?useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: foreaf5a1!234%
+    url: jdbc:mysql://192.168.219.102:3306/proj?useSSL=false&allowPublicKeyRetrieval=true
+    username: sglee
+    password: foreaf5a1!
 
     hikari:
       connection-timeout: 20000 #20초: DB 연결 최대 대기 시간

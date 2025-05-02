@@ -24,7 +24,7 @@ public class MyInterceptor implements HandlerInterceptor {
         } else {
             // Check if the session contains the user attribute (i.e., the user is logged in)
         	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        	UserDetails userInfo = (UserDetails) authentication.getPrincipal();
+        	String userInfo = authentication.getName();
         	
             if (userInfo == null) {
                 // If not logged in, redirect to the login page
